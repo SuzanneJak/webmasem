@@ -1,0 +1,95 @@
+---
+title: "Results one-stage MASEM with moderator"
+output: word_document
+params:
+  lavmodel: NA
+  REtype: NA
+  intervals: NA
+  transform: NA
+  startv: NA
+  moderator: NA
+  sumstatmod: NA
+  kpercor: NA
+  npercor: NA
+  ossemfit: NA
+  sumfit: NA
+  fit: NA
+  Sres: NA
+  varcorr: NA
+  testout: NA
+  modsumind: NA
+  modsum: NA
+  modR2: NA
+---
+
+This report contains the output of your one-stage MASEM analysis using webMASEM. 
+
+
+# Number of studies per correlation coefficient
+
+```{r echo=FALSE}
+params$kpercor
+
+```
+
+# Total sample size per correlation coefficient
+
+```{r echo=FALSE}
+params$npercor
+
+```
+
+# Output overall analysis
+
+`r params$fit`
+
+```{r echo=FALSE}
+plot(params$ossemfit, color = "white")
+params$sumfit
+params$Sres
+params$varcorr
+
+```
+
+
+# Moderator analysis
+
+The following variable was selected as the moderator: `r params$moderator`
+
+## Summary statistics of moderator
+
+```{r echo = FALSE}
+params$sumstatmod
+```
+
+## Omnibus test of moderating effects
+
+```{r echo = FALSE}
+params$testout
+```
+
+## Test of individual moderating effects
+
+```{r echo = FALSE}
+params$modsumind
+```
+
+## Summary output moderator analysis
+
+```{r echo = FALSE}
+params$modsum
+```
+
+## Between-studies variances of model-implied correlation coefficients
+
+```{r echo = FALSE}
+params$modR2
+```
+
+
+The following function arguments were used in the analysis:
+
+- Random effects type: `r params$REtype`
+- Interval type: `r params$intervals`
+- Transformation on between-study variances: `r params$transform`
+- Start values of between-study variances: `r params$startv`
